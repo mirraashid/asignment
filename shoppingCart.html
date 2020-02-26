@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping Cart Price Calculator</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        .sm-hdr {
+            background-color: #002E5C;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .sum-cntnr {
+            padding: 0px;
+            margin-top: 40px;
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0px 0px 0.625em 0.08em rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .sub-content {
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            top: -6px;
+            margin-right: 20px;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            top: -6px;
+            margin-right: 20px;
+        }
+
+        .price-container {
+            font-family: Ubuntu, sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+        }
+
+        .chart-container {
+            min-width: 310px;
+            height: 270px;
+            max-width: 600px;
+            margin: 0 auto
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="padding:10px;">
+        <div class="row">
+            <div class="col-md-12 col-xs-12" style="border:10px solid #F5F5F5;padding:10px;text-align:center;">
+                <h1>Let's Buy Something</h1>
+                <div class="form-container" style="margin-top:30px;">
+                    <input type="text" name="products" id="products"
+                        style="padding:6px;border-radius: 5px;; border:1px solid #ccc;"
+                        onkeypress="return ValidateInput(this)" />
+                    <button class="btn btn-primary" id="calculate" onclick="calculate()">Calculate Price</button> <br />
+                    <span>Valid inputs - [A, B, C, D]</span>
+                </div>
+                <div id="bottom_legend">
+
+                    <!-- Oredr Summary Table -->
+                    <div class="col sum-cntnr">
+                        <div class="sm-hdr">
+                            Order Summary
+                        </div>
+
+                        <div id="summary-holder" style="display: none">
+                            <div class="row text-center">
+                                <div class="col-8" style="margin-top:40px;border-right:1px solid #ccc">
+                                    <div class="row">
+                                        <div class="col" style="border-right:1px solid black;padding:5px;">
+                                            <div class="sub-content">
+                                                Total Price: </div>
+                                            <span id="actual-price" class="price-container"></span>
+                                        </div>
+                                        <div class="col" style="padding:5px;color: #229827;">
+                                            <div class="sub-content">
+                                                Discounted Price:</div>
+                                            <span id="discounted-price" class="price-container"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mt-4">
+                                            <h3>You saved a total of <span id="total-savings"></span>
+                                                on this purchase</h3>
+
+                                            <button class="btn btn-lg btn-danger mt-4"
+                                                onClick="location.reload()">Reset</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-4">
+                                    <div id="chart_container" class="chart-container">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="customScript.js"></script>
